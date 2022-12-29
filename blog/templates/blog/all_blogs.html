@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %} Портфолио {% endblock %}
+
+{% block content %}
+
+    <h2>Всего постов: {{ blogs.count }}</h2>
+
+    {% for blog in blogs %}
+        <a href="{% url 'blog:one_blog' blog.id %}"><h2>{{ blog.title }}</h2></a>
+        <h5>{{ blog.date }}</h5>
+        <p>{{ blog.description|truncatechars:15 }}</p>
+    {% endfor %}
+
+{% endblock %}
